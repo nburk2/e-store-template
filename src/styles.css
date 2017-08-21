@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*.top-section {
+  background-image: url(https://hopefuldays.files.wordpress.com/2013/02/2013-02-12_13-07-35_97.jpg);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-attachment:fixed;
+  position: relative;
+}*/
+
+.backdrop-logo {
+  background-image: url('https://s3.amazonaws.com/www.crystalcleanductservice.com/images/backdrop-logo.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-attachment:fixed;
+  /*background-size: cover;*/
+  position: relative;
+}
+
+blockquote {
+  border: 1px solid #b3b3b3;
+  border-left: 10px solid green;
+  border-radius: 0px;
+  background: #fafafa;
+  font-size: 18px;
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+blockquote p {
+  margin: 0;
+  line-height: 30px;
+  padding-bottom: 20px;
+}
+
+blockquote .small {
+  display: block;
+  font-size: 80%;
+  color: brown;
+  text-align: right;
+}

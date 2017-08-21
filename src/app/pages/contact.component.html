@@ -1,0 +1,89 @@
+<div class="section" style="max-height:500px;">
+  <div class="container">
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <img src="https://lorempixel.com/900/500?r=1" style="max-height:100%;" width="100%" alt="Random first slide">
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</div>
+
+<section class="bg-success backdrop-logo" style="padding-top:50px;padding-bottom:50px;">
+  <div class="row" style="padding-top:20px;padding-bottom:20px;">
+    <div class="push-sm-3 col-sm-6">
+      <h1 class="display-3 text-center" style="color:white;">
+        <i class="fa fa-envelope"></i> Contact Us
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="text-info">
+      <br>
+      <h3>If you have any questions just add your name and contact info below</h3>
+      <br>
+    </div>
+    <div class="status alert alert-success" style="display: none"></div>
+    <form [formGroup]="myform" (ngSubmit)="submitContactForm()">
+      <div class="row">
+        <div class="col-sm-5">
+            <div class="form-group" [ngClass]="{
+                  'has-danger': myform.controls.contactname.invalid && myform.controls.contactname.dirty,
+                  'has-success': myform.controls.contactname.valid && myform.controls.contactname.dirty
+                }">
+                <label>Name *</label>
+                <input type="text" formControlName="contactname" name="contactname" class="form-control" required>
+                <div class="form-control-feedback"
+                     *ngIf="contactname.invalid && contactname.dirty">
+                  Field cannot be empty
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{
+                  'has-danger': myform.controls.email.invalid && myform.controls.email.dirty,
+                  'has-success': myform.controls.email.valid && myform.controls.email.dirty
+                }">
+                <label>Your Email *</label>
+                <input type="email" formControlName="email" name="email" class="form-control" required>
+                <div class="form-control-feedback"
+                     *ngIf="email.invalid && email.dirty">
+                  Field is invalid
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{
+                  'has-danger': myform.controls.number.invalid && myform.controls.number.dirty,
+                  'has-success': myform.controls.number.valid && myform.controls.number.dirty
+                }">
+                <label>Phone #</label>
+                <input type="text" formControlName="number" name="number" class="form-control">
+                <div class="form-control-feedback" *ngIf="number.errors && (number.dirty || number.touched)">
+                  <p *ngIf="number.errors.required">Number is required</p>
+                  <p *ngIf="number.errors.minlength">Number must be atleast 7 characters long</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group" [ngClass]="{
+                  'has-danger': myform.controls.message.invalid && myform.controls.message.dirty,
+                  'has-success': myform.controls.message.valid && myform.controls.message.dirty
+                }">
+                <label>Questions/Comments *</label>
+                <textarea name="message" formControlName="message" required="required" class="form-control" rows="8"></textarea>
+                <div class="form-control-feedback"
+                     *ngIf="message.invalid && message.dirty">
+                  Field cannot be empty
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
