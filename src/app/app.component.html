@@ -9,23 +9,24 @@
 
       <div class="">
         <a class="navbar-brand" href="#">
-            <img src="http://estore.thelaminexgroup.com.au:8080/storefrontCommerce/images/reskin/eStorelogo.png" class="main-logo">
+            <img src="https://s3.amazonaws.com/admin-template-images/eStorelogo.png" class="main-logo">
         </a>
         <!-- category -->
         <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Category</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <button class="dropdown-item">Action - 1</button>
-                <button class="dropdown-item">Another Action</button>
-                <button class="dropdown-item">Something else is here</button>
-            </div>
+          <select (change)="categoryEvent($event)" [(ngModel)]="category" required name="category" class="btn btn-primary">
+              <option value="All" selected>All</option>
+              <option *ngFor="let row of categories" [value]="row.name" >
+                <p *ngIf="row.label">{{row.label}}</p>
+                <p *ngElse>{{row.name}}<p>
+              </option>
+          </select>
         </div>
 
         <!-- text Search -->
-        <input class="col-4" type="text" my-on-key-down-call="callRestService()">
+        <input class="col-4" [(ngModel)]="keyphrase" type="text" my-on-key-down-call="callRestService()">
 
         <!-- Search button -->
-        <button class="btn btn-success" ngbButton><i class="fa fa-search fa-lg"></i></button>
+        <button (click)="search()" class="btn btn-success" ngbButton><i class="fa fa-search fa-lg"></i></button>
       </div>
 
       <ul class="nav navbar-nav">
@@ -40,8 +41,8 @@
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['new']">New</a>
         </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['search']">Search</a>
+        <li class="nav-item" (click)="search()">
+          <a class="nav-link" style="cursor: pointer;">Search</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" [routerLink]="['about']">About</a>
@@ -61,7 +62,7 @@
 <!-- footer -->
 <footer class="bg-inverse">
   <div class="container">
-      <nav class="navbar navbar-inverse navbar-toggleable-sm bg-inverse">
+      <nav class="navbar navbar-inverse navbar-toggleable bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,13 +72,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" [routerLink]="['dashboard']">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about-us.html">About Us</a>
+              <a class="nav-link" [routerLink]="['about']">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact-us.html">contact</a>
+              <a class="nav-link" [routerLink]="['contact']">contact</a>
             </li>
           </ul>
         </div>

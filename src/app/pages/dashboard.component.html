@@ -28,37 +28,19 @@
   <br>
 <div class="section">
   <div class="container">
-    <div class="row">
+    <div class="row row-eq-height">
 
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top" src="https://lorempixel.com/900/500?r=1" width="100%;" alt="Card image cap">
+      <div *ngFor="let row of items" class="col-md-4">
+        <div class="card mb-3">
+          <img class="card-img-top" src="{{row.mainImage}}" width="100%;" alt="Card image cap">
           <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top" src="https://lorempixel.com/900/500?r=2" width="100%;" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top" src="https://lorempixel.com/900/500?r=3" width="100%;" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h4 class="card-title">
+              <a href="#" [routerLink]="['/item', row.category, row.name]">
+                {{row.name}}
+              </a>
+            </h4>
+            <p class="card-text">{{row.description}}</p>
+            <a href="#" class="btn btn-success" [routerLink]="['/item', row.category, row.name]">View</a>
           </div>
         </div>
       </div>

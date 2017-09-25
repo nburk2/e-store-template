@@ -10,6 +10,8 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 export class ContactComponent implements OnInit {
 
   name = "Contact"
+  submitSpinner = "none"
+  showSubmitResponse = "none"
 
   apiRoot: string = "https://29cdrxbieg.execute-api.us-east-1.amazonaws.com";
   constructor(private http: Http) { }
@@ -59,7 +61,7 @@ export class ContactComponent implements OnInit {
     }
   }
   doPOST() {
-   console.log("POST");
+   this.submitSpinner = "inherit"
    let url = `${this.apiRoot}/prod/contactform`;
     this.http.post(url, {
       name:this.myform.value.contactname,
@@ -67,7 +69,11 @@ export class ContactComponent implements OnInit {
       number:this.myform.value.number,
       message:this.myform.value.message,
       website: "e-store template"
-    }).subscribe(res => console.log(res.json()));
+    }).subscribe(res => {
+      console.log(res.json())
+      this.submitSpinner = "none"
+      this.showSubmitResponse = "inherit"
+    });
  }
 }
 // https://codecraft.tv/courses/angular/http/overview/

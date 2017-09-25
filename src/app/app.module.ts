@@ -8,20 +8,28 @@ import { NewComponent }  from './pages/new.component';
 import { SearchComponent }  from './pages/search.component';
 import { AboutComponent }  from './pages/about.component';
 import { ContactComponent }  from './pages/contact.component';
+import { ItemComponent }  from './pages/item.component';
 import { RedirectComponent }  from './redirect.component';
 import { BrowserModule }  from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { SearchService } from './services/search.service';
+import {HttpClientModule} from '@angular/common/http';
+import { FacebookModule } from 'ngx-facebook';
 
 
 @NgModule({
   imports: [
     HttpModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
+    BrowserAnimationsModule,
+    FacebookModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',
@@ -37,7 +45,7 @@ import { HttpModule } from '@angular/http';
         component: NewComponent
       },
       {
-        path: 'search',
+        path: 'search/:category/:keyphrase',
         component: SearchComponent
       },
       {
@@ -47,6 +55,10 @@ import { HttpModule } from '@angular/http';
       {
         path: 'contact',
         component: ContactComponent
+      },
+      {
+        path: 'item/:category/:name',
+        component: ItemComponent
       },
       {
         path: 'admin',
@@ -61,8 +73,11 @@ import { HttpModule } from '@angular/http';
     SearchComponent,
     AboutComponent,
     ContactComponent,
+    ItemComponent,
     RedirectComponent
   ],
+    providers: [
+        SearchService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

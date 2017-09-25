@@ -39,3 +39,27 @@ blockquote .small {
   color: brown;
   text-align: right;
 }
+
+/*
+ * Row with equal height columns
+ * --------------------------------------------------
+ */
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.row-eq-height .card {
+  height: 100%;
+  /*margin-top:20px;*/
+}
+
+.row-eq-height .card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

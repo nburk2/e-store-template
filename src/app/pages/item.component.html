@@ -1,0 +1,60 @@
+<br>
+
+<div class="section">
+  <div class="container">
+    <i [ngStyle]="{ 'display': logginSpinner }" style="text-align:center;" class="fa fa-spinner fa-spin fa-3x text-info col-md-4 push-md-4"></i>
+    <div class="row">
+
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <img class="card-img-top" src="{{currentImage}}" width="100%;" alt="Card image cap" style="cursor: pointer;">
+        </div>
+        <!-- extra images -->
+        <div class="row">
+          <div class="col-3" *ngIf="item.mainImage">
+            <div class="card mb-3">
+              <img class="card-img-top" (click)="updateImage(item.mainImage)" src="{{item.mainImage}}" width="100%;" alt="Card image cap" style="cursor: pointer;">
+            </div>
+          </div>
+          <div class="col-3" *ngIf="item.extraImage1">
+            <div class="card mb-3">
+              <img class="card-img-top" (click)="updateImage(item.extraImage1)" src="{{item.extraImage1}}" width="100%;" alt="Card image cap" style="cursor: pointer;">
+            </div>
+          </div>
+          <div class="col-3" *ngIf="item.extraImage2">
+            <div class="card mb-3">
+              <img class="card-img-top" (click)="updateImage(item.extraImage1)" src="{{item.extraImage2}}" width="100%;" alt="Card image cap" style="cursor: pointer;">
+            </div>
+          </div>
+          <div class="col-3" *ngIf="item.extraImage3">
+            <div class="card mb-3">
+              <img class="card-img-top" (click)="updateImage(item.extraImage3)" src="{{item.extraImage3}}" width="100%;" alt="Card image cap" style="cursor: pointer;">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-3 card-outline-primary">
+          <div class="card-block">
+            <h4 class="card-title">{{item.name}}</h4>
+            <p class="card-text">{{item.description}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-12">
+     <!-- <h4>fb-comments</h4> -->
+     <fb-comments numposts="3"></fb-comments>
+    </div>
+ </div>
+
+</div>
+<br>
